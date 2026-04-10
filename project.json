@@ -1,0 +1,23 @@
+{
+  "overview": "Jain Grocery is a mobile-first web app for a local grocery store in Devpura, Bundi, Rajasthan. Customers can browse 13 products with Hindi descriptions and user-supplied photos, place orders via app, call, or WhatsApp, and get connected directly with the shop owner.",
+  "features": [
+    "13 grocery products with Hindi descriptions and real photos",
+    "Customer order placement with WhatsApp and phone call options",
+    "WhatsApp order notifications to shop owner",
+    "Permanent admin login for shop owner",
+    "PWA installable on phone home screen",
+    "Admin panel for managing products and orders",
+    "No prices shown to customers"
+  ],
+  "category": "e-commerce",
+  "tags": [
+    "grocery",
+    "local-shop",
+    "pwa",
+    "whatsapp",
+    "hindi",
+    "mobile-first",
+    "admin-panel"
+  ],
+  "last_updated": "2026-04-10T09:22:09.675Z"
+}

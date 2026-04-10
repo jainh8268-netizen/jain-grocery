@@ -1,0 +1,70 @@
+type RatingEntry = 
+ record {
+   comment: text;
+   createdAt: int;
+   productId: nat;
+   rating: nat;
+ };
+type ProductId = nat;
+type Product = 
+ record {
+   createdAt: int;
+   description: text;
+   id: nat;
+   imageUrl: text;
+   isActive: bool;
+   name: text;
+ };
+type OrderStatus = 
+ variant {
+   completed;
+   pending;
+   read;
+ };
+type OrderItem = 
+ record {
+   productId: nat;
+   productName: text;
+   quantity: nat;
+ };
+type OrderInput = 
+ record {
+   customerName: text;
+   customerPhone: text;
+   items: vec OrderItem;
+   notes: text;
+ };
+type OrderId = nat;
+type Order = 
+ record {
+   createdAt: int;
+   customerName: text;
+   customerPhone: text;
+   id: nat;
+   items: vec OrderItem;
+   notes: text;
+   status: OrderStatus;
+ };
+type LoginResult = 
+ variant {
+   err: text;
+   ok: text;
+ };
+service : {
+  addProduct: (token: text, name: text, imageUrl: text, description: 
+   text) -> (Product);
+  adminLogin: (username: text, password: text) -> (LoginResult);
+  fixProductImages: (token: text, productIds: vec ProductId) -> ();
+  getActiveProducts: () -> (vec Product) query;
+  getAllOrders: (token: text) -> (vec Order) query;
+  getAllProducts: (token: text) -> (vec Product) query;
+  getProductAverageRating: (productId: nat) -> (opt float64) query;
+  getProductRatings: (productId: nat) -> (vec RatingEntry) query;
+  markOrderCompleted: (token: text, orderId: OrderId) -> (opt Order);
+  markOrderRead: (token: text, orderId: OrderId) -> (opt Order);
+  placeOrder: (input: OrderInput) -> (Order);
+  rateProduct: (productId: nat, rating: nat, comment: text) -> ();
+  toggleProduct: (token: text, productId: ProductId) -> (opt Product);
+  updateProductImage: (token: text, productId: ProductId, imageUrl: text) ->
+   (opt Product);
+}

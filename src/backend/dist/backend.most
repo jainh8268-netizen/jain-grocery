@@ -1,0 +1,48 @@
+// Version: 1.0.0
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type OrderItem__6430428 =
+  {productId : Nat; productName : Text; quantity : Nat};
+type OrderStatus__262164996 = {#completed; #pending; #read};
+type Order__575898083 =
+  {
+    createdAt : Int;
+    customerName : Text;
+    customerPhone : Text;
+    id : Nat;
+    items : [OrderItem__6430428];
+    notes : Text;
+    status : OrderStatus__262164996
+  };
+type Product__726031804 =
+  {
+    createdAt : Int;
+    description : Text;
+    id : Nat;
+    imageUrl : Text;
+    isActive : Bool;
+    name : Text
+  };
+type RatingEntry__439257864 =
+  {comment : Text; createdAt : Int; productId : Nat; rating : Nat};
+actor {
+  stable counters : {var nextOrderId : Nat; var nextProductId : Nat};
+  stable orders :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Order__575898083]];
+      var elementIndex : Nat__490723111
+    };
+  stable products :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Product__726031804]];
+      var elementIndex : Nat__490723111
+    };
+  stable ratings :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?RatingEntry__439257864]];
+      var elementIndex : Nat__490723111
+    }
+};
